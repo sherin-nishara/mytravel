@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="get" class="row g-3 mb-4">
+  <div class="col">
+    <input type="text" name="source" placeholder="Source" class="form-control" value="{{ request.GET.source }}">
+  </div>
+  <div class="col">
+    <input type="text" name="destination" placeholder="Destination" class="form-control" value="{{ request.GET.destination }}">
+  </div>
+  <div class="col">
+    <select name="type" class="form-control">
+      <option value="">All Types</option>
+      <option value="Flight">Flight</option>
+      <option value="Train">Train</option>
+      <option value="Bus">Bus</option>
+    </select>
+  </div>
+  <div class="col">
+    <button type="submit" class="btn btn-primary">Filter</button>
+  </div>
+</form>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th>Price</th>
+      <th>Seats</th>
+      <th>Book</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for travel in travels %}
+    <tr>
+      <td>{{ travel.type }}</td>
+      <td>{{ travel.source }}</td>
+      <td>{{ travel.destination }}</td>
+      <td>{{ travel.datetime }}</td>
+      <td>{{ travel.price }}</td>
+      <td>{{ travel.available_seats }}</td>
+      <td>
+        <a href="{% url 'book_travel' travel.id %}" class="btn btn-sm btn-success">Book</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7">No travel options available.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

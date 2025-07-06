@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="hero-section">
+  <img src="https://t4.ftcdn.net/jpg/00/65/48/25/360_F_65482539_C0ZozE5gUjCafz7Xq98WB4dW6LAhqKfs.jpg" class="hero-image" alt="Hero Travel Banner">
+  <div class="hero-text">
+    <h1>Plan Your Journey with Mytravel</h1>
+  </div>
+</div>
+
+<div class="home-box">
+  <h2>Welcome to Mytravel</h2>
+  {% if user.is_authenticated %}
+    <p>Hello, <strong>{{ user.username }}</strong>! 👋</p>
+
+    <div class="action-cards">
+      <a href="{% url 'travel_list' %}" class="action-card">
+        <h4>Explore Travels</h4>
+        <p>Find and book bus, train, or flight tickets.</p>
+      </a>
+      <a href="{% url 'my_bookings' %}" class="action-card">
+        <h4>My Bookings</h4>
+        <p>View your booking history and cancel if needed.</p>
+      </a>
+      <a href="{% url 'profile' %}" class="action-card">
+        <h4>Edit Profile</h4>
+        <p>Update your username or email anytime.</p>
+      </a>
+    </div>
+  {% else %}
+    <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to start booking your trips!</p>
+  {% endif %}
+</div>
+{% endblock %}
