@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: travel-booking
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn travel_booking.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: travel_booking.settings
+      - key: SECRET_KEY
+        value: django-insecure-ouc+)(-#e)b#@0dojz6@k#wt#h8xvaxnx4h@xxxbmptk3=b^uu
