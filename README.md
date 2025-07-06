@@ -1,5 +1,10 @@
 # Travel Booking Web App
 
+
+## Live Link
+
+https://mytravel-8leh.onrender.com/
+
 This is a Django-based travel booking application where users can:
 
 - Register, login, update profile
@@ -18,6 +23,11 @@ This is a Django-based travel booking application where users can:
 - Travel filters + booking system
 - Cancel bookings
 - Responsive UI
+
+## Sample Credentials 
+
+username: user
+password: user
 
 ## Setup Locally
 
